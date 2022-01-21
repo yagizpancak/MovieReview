@@ -1,7 +1,1 @@
 User: admin has logged out.
-User: admin has logged out.
-User: yagiz_pan has logged in.
-User: yagiz_pan added new review.
-User: yagiz_pan has logged out.
-User: john has logged in.
-User: john added new review.
