@@ -23,7 +23,7 @@
                         <a href="index.php">Home</a>
                     </li>
                     <li style="display: inline;padding: 1%;font-weight: bold;">
-                        <a href="index.php#foods">Movies</a>
+                        <a href="index.php#movies">Movies</a>
                     </li>
                     <li style="display: inline;padding: 1%;font-weight: bold;">
                         <a href="index.php#contact">Contact</a>

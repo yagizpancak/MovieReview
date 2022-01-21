@@ -1,5 +1,6 @@
 <?php session_start(); 
-include("connection.php"); ?>
+include("connection.php");
+include("fileIO.php"); ?>
 <html>
     <head>
         <title>Movie Review Website</title>
@@ -23,7 +24,7 @@ include("connection.php"); ?>
                     <a href="index.php">Home</a>
                 </li>
                 <li style="display: inline;padding: 1%;font-weight: bold;">
-                    <a href="index.php#foods">Movies</a>
+                    <a href="index.php#movies">Movies</a>
                 </li>
                 <li style="display: inline;padding: 1%;font-weight: bold;">
                     <a href="index.php#contact">Contact</a>
@@ -114,6 +115,7 @@ include("connection.php"); ?>
 <?php
     if(isset($_POST['photo'])){
         move_uploaded_file($_FILES['file']['tmp_name'], "images/profile_images/".$username.".jpg");
+        write_log("User: ".$username." updated profile photo.");
         header("location:"."profile.php");
     }
 
@@ -122,6 +124,7 @@ include("connection.php"); ?>
             $full_name = $_POST['full_name'];
             $sql = "UPDATE users SET full_name='$full_name' WHERE username='$username'";
             $response = mysqli_query($connection, $sql);
+            write_log("User: ".$username." updated full name.");
         }
 
         if($_POST['username'] != $username && $_POST['username'] != ''){
@@ -134,6 +137,7 @@ include("connection.php"); ?>
                 $response = mysqli_query($connection, $sql);
                 rename("images/profile_images/".$username.".jpg", "images/profile_images/".$new_username.".jpg");
                 $username = $new_username;
+                write_log("User: ".$username." updated username.");
                 $_SESSION['login'] = $username;
                 
             }else{
@@ -145,6 +149,7 @@ include("connection.php"); ?>
             $password = $_POST['password'];
             $sql = "UPDATE users SET password='$password' WHERE username='$username'";
             $response = mysqli_query($connection, $sql);
+            write_log("User: ".$username." updated password.");
         }
         header("location:"."profile.php");
     }

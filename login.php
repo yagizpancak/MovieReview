@@ -1,5 +1,6 @@
 <?php session_start();
-     include("connection.php"); ?>
+     include("connection.php");
+     include("fileIO.php"); ?>
 <html>
     <head>
         <title>LogIn - Movie Review Website</title>
@@ -23,7 +24,7 @@
                     <a href="index.php">Home</a>
                 </li>
                 <li style="display: inline;padding: 1%;font-weight: bold;">
-                    <a href="index.php#foods">Movies</a>
+                    <a href="index.php#movies">Movies</a>
                 </li>
                 <li style="display: inline;padding: 1%;font-weight: bold;">
                     <a href="index.php#contact">Contact</a>
@@ -77,7 +78,13 @@
 
         if(mysqli_num_rows($response)==1){
             $_SESSION['login'] = $username;
-            header("location:"."index.php");
+            if($username == 'admin'){
+                header("location:"."admin.php");
+
+            }else {
+                write_log("User: ".$username." has logged in.");
+                header("location:"."index.php");
+            }
         }else{
             //user not exist
             $_SESSION['login'] = "<div style='color: red; text-align: center;'>Username or password is incorrect.</div>";

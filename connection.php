@@ -1,10 +1,11 @@
 
-
-  //  $connection = mysqli_connect('localhost', 'root', '') or die('There was a problem connecting to the database');
-    //$db = mysqli_select_db($connection, 'movie_review') or die('There was a problem connecting to the database');
-
+<?php
+    $connection = mysqli_connect('localhost', 'root', '') or die('There was a problem connecting to the database');
+    $db = mysqli_select_db($connection, 'movie_review') or die('There was a problem connecting to the database');
+?>
 
 <?php
+/*
     //Get Heroku ClearDB connection information
     $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
@@ -17,4 +18,5 @@
     // Connect to DB
     $connection = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password);
     $db = mysqli_select_db($connection, $cleardb_db);
+    */
 ?>

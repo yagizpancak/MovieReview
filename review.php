@@ -1,5 +1,6 @@
 <?php session_start();
-     include("connection.php"); ?>
+     include("connection.php");
+     include("fileIO.php"); ?>
 <html>
     <head>
         <title>Register - Movie Review Website</title>
@@ -23,7 +24,7 @@
                         <a href="index.php">Home</a>
                     </li>
                     <li style="display: inline;padding: 1%;font-weight: bold;">
-                        <a href="index.php#foods">Movies</a>
+                        <a href="index.php#movies">Movies</a>
                     </li>
                     <li style="display: inline;padding: 1%;font-weight: bold;">
                         <a href="index.php#contact">Contact</a>
@@ -96,6 +97,7 @@
 
         $sql = "INSERT INTO reviews (movie_name, review, username) VALUES ('$movie', '$review', '$username')";
         $response = mysqli_query($connection, $sql);
+        write_log("User: ".$username." added new review.");
 
         header("location:"."review-board.php");
     }

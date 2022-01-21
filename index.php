@@ -23,7 +23,7 @@
                     <a href="index.php">Home</a>
                 </li>
                 <li style="display: inline;padding: 1%;font-weight: bold;">
-                    <a href="index.php#foods">Movies</a>
+                    <a href="index.php#movies">Movies</a>
                 </li>
                 <li style="display: inline;padding: 1%;font-weight: bold;">
                     <a href="index.php#contact">Contact</a>
@@ -73,7 +73,7 @@
     
     <div style="background-color: #ececec; padding: 4% 0;">
         <div style="width: 80%; margin: 0 auto; padding: 1%;">
-            <h2 style="text-align: center;" >Movies in Theaters</h2>
+            <h2 style="text-align: center;" id='movies'>Movies in Theaters</h2>
 
             <?php
                 $sql = "SELECT * FROM movies ";
