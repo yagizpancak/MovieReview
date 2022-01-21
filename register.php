@@ -54,7 +54,7 @@
                 ?>
 
                 <br><br>Password:
-                <br><input type="text" name="password" placeholder="Enter Password" required=True>
+                <br><input type="password" name="password" placeholder="Enter Password" required=True>
             
                 <br><br><input type="submit" name="submit" value="Register" class="button">
             </form>

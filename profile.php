@@ -74,6 +74,12 @@ include("fileIO.php"); ?>
                 <label for="file" style="cursor: pointer; background: rgba(0, 0, 0, 0.7); color: wheat;border-radius: 5px; padding: 1%; font-size: 15px;">Choose Photo</label>
                 <input type="submit" name="photo" value="Update Photo" style="cursor: pointer; background: rgba(0, 0, 0, 0.7); color: wheat;border-radius: 5px; padding: 1%; font-size: 15px; border: none">
             </form>
+            <?php 
+                if(isset($_SESSION['extension'])){
+                    echo $_SESSION['extension'];
+                    unset($_SESSION['extension']);
+                }
+            ?>
             
             
             <?php 
@@ -114,9 +120,16 @@ include("fileIO.php"); ?>
 
 <?php
     if(isset($_POST['photo'])){
-        move_uploaded_file($_FILES['file']['tmp_name'], "images/profile_images/".$username.".jpg");
-        write_log("User: ".$username." updated profile photo.");
-        header("location:"."profile.php");
+        $img_name = $_FILES['file']['name'];
+        $extension=(strtolower(pathinfo($img_name, PATHINFO_EXTENSION)));
+        if($extension=='.jpg'){
+            move_uploaded_file($_FILES['file']['tmp_name'], "images/profile_images/".$username.".jpg");
+            write_log("User: ".$username." updated profile photo.");
+            header("location:"."profile.php");
+        }else {
+            $_SESSION['extension'] = "<div style='color: red; text-align: center;'>Please upload .jpg file.</div>";
+            header("location:"."profile.php");
+        } 
     }
 
     if(isset($_POST['submit'])){
