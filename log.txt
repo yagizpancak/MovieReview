@@ -1,1 +1,5 @@
 User: admin has logged out.
+User: john has logged in.
+User: john updated profile photo.
+User: john updated profile photo.
+User: john updated profile photo.

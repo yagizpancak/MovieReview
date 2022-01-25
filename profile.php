@@ -126,7 +126,7 @@ include("fileIO.php"); ?>
     if(isset($_POST['photo'])){
         $img_name = $_FILES['file']['name'];
         $extension=(strtolower(pathinfo($img_name, PATHINFO_EXTENSION)));
-        if($extension=='.jpg'){
+        if($extension=='jpg'){
             move_uploaded_file($_FILES['file']['tmp_name'], "images/profile_images/".$username.".jpg");
             write_log("User: ".$username." updated profile photo.");
             header("location:"."profile.php");
